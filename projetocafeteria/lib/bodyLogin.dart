@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:projetocafeteria/cadastro.dart';
+import 'package:projetocafeteria/textField_app.dart';
 
 import 'homePage.dart';
 
@@ -38,37 +39,30 @@ class _BodyLoginState extends State<BodyLogin> {
               padding: const EdgeInsets.all(12.0),
                 child: Column(
                   children: [
-                    TextField(
-                      onChanged: (txt) {
-                      email = txt;
+                    TextField_app(
+                      onChanged: (txt){
+                        email = txt;
                       },
-                      decoration: const InputDecoration(
-                        labelText: "Email", 
-                        border: OutlineInputBorder() 
-                      ),
+                      obscureText: false,
+                      labelText: "Email",
                       keyboardType: TextInputType.emailAddress,
-                  
                     ),
                     const SizedBox(height: 10),
-                    TextField(
+                    TextField_app(
                       onChanged: (txt) {
                        senha = txt;
-                      },
-                      style: const TextStyle(color: Colors.black),
-                      decoration: const InputDecoration(
-                        labelText: "Senha", 
-                        border: OutlineInputBorder(),
-                        hintStyle: TextStyle(color: Colors.black),
-                        
-                        
-                      ),
-                      obscureText: true,
+                      }, 
+                      obscureText: true, 
+                      labelText: "Senha",
+                      keyboardType: TextInputType.none,
                     ),
                     const SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
                       child: TextButton(
+                        
                         style: TextButton.styleFrom(
+                          
                           primary: Colors.white,
                           backgroundColor: Color.fromARGB(217,244,90,36),
                           elevation: 50,

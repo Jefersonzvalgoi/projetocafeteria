@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:projetocafeteria/background_app.dart';
 import 'package:projetocafeteria/cadastro.dart';
 import 'package:projetocafeteria/textField_app.dart';
 
@@ -21,9 +22,7 @@ class _BodyLoginState extends State<BodyLogin> {
   @override
   Widget build(BuildContext context) => Scaffold(
     
-    body: Container(
-      padding: const EdgeInsets.all(20.0),
-      color: const Color.fromARGB(255,36, 1, 22),
+    body: Background_app(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -71,7 +70,8 @@ class _BodyLoginState extends State<BodyLogin> {
                             primary: Colors.white,
                             backgroundColor:const Color.fromARGB(217,244,90,36),
                             elevation: 50.00,
-                            shadowColor: Colors.black
+                            shadowColor: Colors.black,
+                            
                           ),
                           onPressed: (){
                             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));

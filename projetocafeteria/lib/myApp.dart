@@ -11,7 +11,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) => MaterialApp(
-    theme: ThemeData.dark(),
-    home: const PageLogin(),
-  );
+        theme: ThemeData.dark(),
+        debugShowCheckedModeBanner: false,
+        home: const PageLogin(),
+      );
 }

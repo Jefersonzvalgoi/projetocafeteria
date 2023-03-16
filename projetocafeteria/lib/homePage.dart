@@ -9,89 +9,93 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MENU",),
+        title: const Text(
+          "MENU",
+        ),
         centerTitle: true,
-        
       ),
-      body:  Background_app(
-        child: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: ListView(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Componente_home(),
-                  SizedBox(width: 20,),
-                  Componente_home(),
-                ],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Componente_home(),
-                  SizedBox(width: 20,),
-                  Componente_home(),
-                ],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Componente_home(),
-                  SizedBox(width: 20,),
-                  Componente_home(),
-                ],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Componente_home(),
-                  SizedBox(width: 20,),
-                  Componente_home(),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Componente_home(),
-                  SizedBox(width: 20,),
-                  Componente_home(),
-                ],
-              ),
-            ],
-          ),
-        )),
-        bottomNavigationBar: BottomNavigationBar(        
-          items: const [
+      body: Background_app(
+          child: Center(
+        child: ListView(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Componente_home(),
+                SizedBox(
+                  width: 20,
+                ),
+                Componente_home(),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Componente_home(),
+                SizedBox(
+                  width: 20,
+                ),
+                Componente_home(),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Componente_home(),
+                SizedBox(
+                  width: 20,
+                ),
+                Componente_home(),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Componente_home(),
+                SizedBox(
+                  width: 20,
+                ),
+                Componente_home(),
+              ],
+            ),
+          ],
+        ),
+      )),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: "home"
+            label: "home",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: "favoritos"
+            label: "favoritos",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: "carrinho"
+            label: "carrinho",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            label: "conta"
+            label: "conta",
           ),
-
-        ],),
+        ],
+      ),
     );
   }
 }

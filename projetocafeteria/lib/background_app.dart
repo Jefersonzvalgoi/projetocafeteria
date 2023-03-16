@@ -10,7 +10,9 @@ class Background_app extends StatelessWidget {
     return Container(
       child: child,
       padding: const EdgeInsets.all(20.0),
-      color: const Color.fromARGB(255,36, 1, 22),
+      color: const Color.fromARGB(255, 36, 1, 22),
+      width: double.infinity,
+      height: double.infinity,
     );
   }
 }

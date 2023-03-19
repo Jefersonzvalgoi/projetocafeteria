@@ -13,6 +13,15 @@ class HomePage extends StatelessWidget {
           "MENU",
         ),
         centerTitle: true,
+        
+        actions: [
+          IconButton(
+            icon:const Icon(Icons.shopping_cart), 
+            onPressed: () { 
+              
+             },
+          ),
+        ],
       ),
       body: Background_app(
           child: Center(
@@ -85,10 +94,6 @@ class HomePage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: "favoritos",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: "carrinho",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),

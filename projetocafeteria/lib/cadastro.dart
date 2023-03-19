@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projetocafeteria/background_app.dart';
 import 'package:projetocafeteria/pageLogin.dart';
+import 'package:projetocafeteria/services/autentication_service.dart';
 import 'package:projetocafeteria/textField_app.dart';
+import 'package:projetocafeteria/text_app.dart';
+import 'package:provider/provider.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({super.key});
@@ -11,11 +14,22 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  String nome = "";
+  TextEditingController nome = TextEditingController();
 
-  String email = "";
+  TextEditingController email = TextEditingController();
+  
 
-  String senha = "";
+  TextEditingController senha = TextEditingController();
+
+registrar() async {
+    try {
+      await context.read<AutenticationService>().registrar(email.text, senha.text);
+    } on AutenticationException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message),));
+    }
+
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -30,49 +44,65 @@ class _CadastroState extends State<Cadastro> {
                 width: 300,
                 child: Image.asset("assets/img/case.png"),
               ),
-              const Text(
-                "Cadastro Switch Case Coffe Break!",
-                textAlign: TextAlign.center,
+              const Text_app(
+                data:"Cadastro Switch Case Coffe Break!",
               ),
               const SizedBox(
                 height: 40,
               ),
               Card(
                 child: Container(
-                  color: Colors.grey,
+                  color: Color.fromARGB(127, 36, 1, 22),
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Column(
                       children: [
-                        TextField_app(
-                          onChanged: (txt) {
-                            nome = txt;
-                          },
-                          obscureText: false,
-                          labelText: "Nome",
+                        TextFormField(
+
+                          controller: nome,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Nome",
+                          ),
+
                           keyboardType: TextInputType.name,
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        TextField_app(
-                          onChanged: (txt) {
-                            email = txt;
-                          },
-                          obscureText: false,
-                          labelText: "Email",
-                          keyboardType: TextInputType.name,
+                        TextFormField(
+                          controller: senha,
+                          validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Informe um corretamente!';
+                              }
+                              return null;
+                            },
+                          
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Email",
+                          ),
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        TextField_app(
-                          onChanged: (txt) {
-                            senha = txt;
+                        TextFormField(
+                          validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Informe uma senha!';
+                              }else if(value.length < 6){
+                                return 'Sua senha deve conter no mínimo 6 caracteres!';
+                              }
+                              return null;
                           },
-                          obscureText: false,
-                          labelText: "Senha",
-                          keyboardType: TextInputType.name,
+                          controller: senha,
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Senha",
+                            ),
                         ),
                         const SizedBox(
                           height: 40,
@@ -91,9 +121,7 @@ class _CadastroState extends State<Cadastro> {
                                   shadowColor: Colors.black,
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) => PageLogin()));
+                                  registrar();
                                 },
                                 child: const Text(
                                   "Cadastrar",

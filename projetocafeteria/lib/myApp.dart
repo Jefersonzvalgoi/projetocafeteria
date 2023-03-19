@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projetocafeteria/pageLogin.dart';
+
+import 'services/autentication_service.dart';
+import 'package:projetocafeteria/widgets/autenticationCheck.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -10,9 +12,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) {
+    return MaterialApp(
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        home: const PageLogin(),
+        home:  const AutenticationCheck(),
       );
+    }
+    
 }
+

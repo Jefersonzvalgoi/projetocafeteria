@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetocafeteria/homePage.dart';
 import 'package:projetocafeteria/services/autentication_service.dart';
 import 'package:projetocafeteria/textField_app.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,6 @@ class PageLogin extends StatefulWidget {
 }
 
 class _PageLoginState extends State<PageLogin> {
-
   TextEditingController email = TextEditingController();
   TextEditingController senha = TextEditingController();
 
@@ -23,10 +23,11 @@ class _PageLoginState extends State<PageLogin> {
     try {
       await context.read<AutenticationService>().login(email.text, senha.text);
     } on AutenticationException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
     }
-
   }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Background_app(
@@ -38,15 +39,15 @@ class _PageLoginState extends State<PageLogin> {
                     height: 400,
                     width: 400,
                     child: Image.asset('assets/img/case.png')),
-                const Text_app( 
-                  data:"Caso escolha um café, pare aqui!",
+                const Text_app(
+                  data: "Caso escolha um café, pare aqui!",
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Card(
                   child: Container(
-                  color: const Color.fromARGB(127, 36, 1, 22),
+                    color: const Color.fromARGB(127, 36, 1, 22),
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(
@@ -54,7 +55,10 @@ class _PageLoginState extends State<PageLogin> {
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Email',
-                              border: OutlineInputBorder(),
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)),
+                              ),
                             ),
                             controller: email,
                             validator: (value) {
@@ -69,13 +73,16 @@ class _PageLoginState extends State<PageLogin> {
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Senha',
-                              border: OutlineInputBorder(),
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)),
+                              ),
                             ),
                             controller: senha,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Informe sua senha!';
-                              }else if(value.length < 6){
+                              } else if (value.length < 6) {
                                 return 'Sua senha deve conter no mínimo 6 caracteres!';
                               }
                               return null;
@@ -98,7 +105,11 @@ class _PageLoginState extends State<PageLogin> {
                                     shadowColor: Colors.black,
                                   ),
                                   onPressed: () {
-                                    logar();
+                                    //logar();
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const HomePage()));
                                   },
                                   child: const Text(
                                     "Entrar",
@@ -115,11 +126,11 @@ class _PageLoginState extends State<PageLogin> {
                 ),
                 GestureDetector(
                   child: const Text_app(
-                    data: "Ainda não é cadastrado? Cadastre-se aqui!",                    
+                    data: "Ainda não é cadastrado? Cadastre-se aqui!",
                   ),
                   onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const Cadastro()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Cadastro()));
                   },
                 )
               ],

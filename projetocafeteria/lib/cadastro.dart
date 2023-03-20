@@ -17,19 +17,20 @@ class _CadastroState extends State<Cadastro> {
   TextEditingController nome = TextEditingController();
 
   TextEditingController email = TextEditingController();
-  
 
   TextEditingController senha = TextEditingController();
 
-registrar() async {
+  registrar() async {
     try {
-      await context.read<AutenticationService>().registrar(email.text, senha.text);
+      await context
+          .read<AutenticationService>()
+          .registrar(email.text, senha.text);
     } on AutenticationException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message),));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message),
+      ));
     }
-
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ registrar() async {
                 child: Image.asset("assets/img/case.png"),
               ),
               const Text_app(
-                data:"Cadastro Switch Case Coffe Break!",
+                data: "Cadastro Switch Case Coffe Break!",
               ),
               const SizedBox(
                 height: 40,
@@ -58,13 +59,14 @@ registrar() async {
                     child: Column(
                       children: [
                         TextFormField(
-
                           controller: nome,
                           decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
+                            ),
                             labelText: "Nome",
                           ),
-
                           keyboardType: TextInputType.name,
                         ),
                         const SizedBox(
@@ -73,14 +75,16 @@ registrar() async {
                         TextFormField(
                           controller: senha,
                           validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Informe um corretamente!';
-                              }
-                              return null;
-                            },
-                          
+                            if (value!.isEmpty) {
+                              return 'Informe um corretamente!';
+                            }
+                            return null;
+                          },
                           decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
+                            ),
                             labelText: "Email",
                           ),
                           keyboardType: TextInputType.emailAddress,
@@ -90,19 +94,22 @@ registrar() async {
                         ),
                         TextFormField(
                           validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Informe uma senha!';
-                              }else if(value.length < 6){
-                                return 'Sua senha deve conter no mínimo 6 caracteres!';
-                              }
-                              return null;
+                            if (value!.isEmpty) {
+                              return 'Informe uma senha!';
+                            } else if (value.length < 6) {
+                              return 'Sua senha deve conter no mínimo 6 caracteres!';
+                            }
+                            return null;
                           },
                           controller: senha,
                           obscureText: true,
                           decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "Senha",
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
                             ),
+                            labelText: "Senha",
+                          ),
                         ),
                         const SizedBox(
                           height: 40,

@@ -29,6 +29,13 @@
             {
               "client_id": "349437063430-u09ue16qeqvqv382623m76mn3km63uao.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "349437063430-0r68a9s8efgvss1pk41cdfig8dv4ufie.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.projetocafeteria"
+              }
             }
           ]
         }

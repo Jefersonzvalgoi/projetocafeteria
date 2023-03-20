@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projetocafeteria/Repositories/usuario_db_repository.dart';
+import 'package:projetocafeteria/Repositories/usuario_repository.dart';
 import 'package:projetocafeteria/background_app.dart';
+import 'package:projetocafeteria/models/usuario.dart';
 import 'package:projetocafeteria/pageLogin.dart';
 import 'package:projetocafeteria/textField_app.dart';
 
@@ -11,11 +14,13 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  String nome = "";
+  UsuarioDBRepository user = UsuarioDBRepository();
 
-  String email = "";
+  TextEditingController nome = TextEditingController();
 
-  String senha = "";
+  TextEditingController email = TextEditingController();
+
+  TextEditingController senha = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +50,7 @@ class _CadastroState extends State<Cadastro> {
                     child: Column(
                       children: [
                         TextField_app(
-                          onChanged: (txt) {
-                            nome = txt;
-                          },
+                          controller: nome,
                           obscureText: false,
                           labelText: "Nome",
                           keyboardType: TextInputType.name,
@@ -56,9 +59,7 @@ class _CadastroState extends State<Cadastro> {
                           height: 20,
                         ),
                         TextField_app(
-                          onChanged: (txt) {
-                            email = txt;
-                          },
+                          controller: email,
                           obscureText: false,
                           labelText: "Email",
                           keyboardType: TextInputType.name,
@@ -67,10 +68,8 @@ class _CadastroState extends State<Cadastro> {
                           height: 20,
                         ),
                         TextField_app(
-                          onChanged: (txt) {
-                            senha = txt;
-                          },
-                          obscureText: false,
+                          controller: senha,
+                          obscureText: true,
                           labelText: "Senha",
                           keyboardType: TextInputType.name,
                         ),
@@ -91,6 +90,7 @@ class _CadastroState extends State<Cadastro> {
                                   shadowColor: Colors.black,
                                 ),
                                 onPressed: () {
+                                  entidade.inserir();
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (context) => PageLogin()));

@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 class TextField_app extends StatelessWidget {
   const TextField_app(
       {super.key,
-      required this.onChanged,
       required this.obscureText,
       required this.labelText,
-      required this.keyboardType});
+      required this.keyboardType,
+      required this.controller});
 
-  final Function(String)? onChanged;
   final bool obscureText;
   final String labelText;
   final TextInputType keyboardType;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: TextField(
-        onChanged: onChanged,
+      child: TextFormField(
+        controller: controller,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
           labelText: labelText,

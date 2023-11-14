@@ -15,8 +15,8 @@ class BodyLogin extends StatefulWidget {
 }
 
 class _BodyLoginState extends State<BodyLogin> {
-  String email = '';
-  String senha = '';
+  TextEditingController email = TextEditingController();
+  TextEditingController senha = TextEditingController();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -44,18 +44,14 @@ class _BodyLoginState extends State<BodyLogin> {
                       child: Column(
                         children: [
                           TextField_app(
-                            onChanged: (txt) {
-                              email = txt;
-                            },
+                            controller: email,
                             obscureText: false,
                             labelText: "Email",
                             keyboardType: TextInputType.emailAddress,
                           ),
                           const SizedBox(height: 10),
                           TextField_app(
-                            onChanged: (txt) {
-                              senha = txt;
-                            },
+                            controller: senha,
                             obscureText: true,
                             labelText: "Senha",
                             keyboardType: TextInputType.none,
